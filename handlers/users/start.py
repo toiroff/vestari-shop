@@ -202,9 +202,9 @@ async def show_menu(message: types.Message):
 
 @dp.message_handler(CommandHelp())
 async def bot_help(message: types.Message):
-    text = ("Buyruqlar: ",
+    text = ("Commands: ",
             "/start - Start the bot",
-            "/help - Yordam")
+            "/help - Help")
 
     await message.answer("\n".join(text))
 

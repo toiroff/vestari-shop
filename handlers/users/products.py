@@ -323,7 +323,7 @@ async def add_buasfdfasd(call: types.CallbackQuery, state: FSMContext):
                     total_price += price
                     son += 1
                     text += f"{son}. 🛍 Product name: {nom}\n"
-                    text += f"{number} x {narx} = {price} so'm\n"
+                    text += f"{number} x {narx} = {price} $\n"
                 text += f"\nTotal price: {total_price} $"
                 await bot.send_message(chat_id = admin, text = text, reply_markup = await acceptance(user_id = call.from_user.id, order_id = order_id))
             await call.answer("Sent to admin! ✅\nAdmins will contact you.", show_alert=True)
