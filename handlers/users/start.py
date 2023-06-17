@@ -40,7 +40,7 @@ async def enter_phone(message: types.Message, state: FSMContext):
     try:
         db.add_user(user_id=message.from_user.id,
             username=message.from_user.username,
-            fullname=data['name'],
+            fullname=data.get('name'),
             phone=phone_num)
         await message.answer("You have successfully registered!", reply_markup=main)
         await state.finish()
