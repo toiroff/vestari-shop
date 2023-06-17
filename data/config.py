@@ -7,4 +7,4 @@ env.read_env()
 # .env fayl ichidan quyidagilarni o'qiymiz
 BOT_TOKEN = env.str("BOT_TOKEN")
 ADMINS = env.list("ADMINS")
-IP = env.str("ip")
+# IP = env.str("ip")
