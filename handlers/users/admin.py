@@ -242,9 +242,9 @@ async def get_acceptes_orders(call: CallbackQuery):
                 son += 1
                 text += f"{son}.Product name: {product_name}\n"
                 price = int(number) * int(product_price)
-                text += f"{number} x {product_price} = {price} $\n\n"
+                text += f"{number} x {product_price} = {price} CHF\n\n"
                 total_price += price
-            text += f"💸 Total {total_price} $"
+            text += f"💸 Total {total_price} CHF"
             await call.message.answer(text = text)
         await call.message.answer(text = "Admin panel", reply_markup=panel)
         await call.message.delete()
@@ -277,9 +277,9 @@ async def get_acceptes_orders(call: CallbackQuery):
                 son += 1
                 text += f"{son}.Product name: {product_name}\n"
                 price = int(number) * int(product_price)
-                text += f"{number} x {product_price} = {price} $\n\n"
+                text += f"{number} x {product_price} = {price} CHF\n\n"
                 total_price += price
-            text += f"💸 Total: {total_price} $"
+            text += f"💸 Total: {total_price} CHF"
             await call.message.answer(text = text)
         await call.message.answer(text = "Admin panel", reply_markup=panel)
         await call.message.delete()
@@ -312,9 +312,9 @@ async def get_acceptes_orders(call: CallbackQuery):
                 son += 1
                 text += f"{son}.Product name: {product_name}\n"
                 price = int(number) * int(product_price)
-                text += f"{number} x {product_price} = {price} $\n\n"
+                text += f"{number} x {product_price} = {price} CHF\n\n"
                 total_price += price
-            text += f"💸 Total: {total_price} $"
+            text += f"💸 Total: {total_price} CHF"
             await call.message.answer(text = text)
         await call.message.answer(text = "Admin panel", reply_markup=panel)
         await call.message.delete()
@@ -348,7 +348,7 @@ async def bot_menu(message:types.CallbackQuery,state:FSMContext):
 @dp.message_handler(state=Add_products.name)
 async def add_name(message:types.Message, state: FSMContext):
     await state.update_data({"name": message.text})
-    await message.answer("<b>💸 Enter price\n\n please type in $ just don't put the $ sign</b>")
+    await message.answer("<b>💸 Enter price\n\n please type in CHF just don't put the CHF sign</b>")
     await Add_products.money.set()
 
 @dp.message_handler(state=Add_products.money)
@@ -378,7 +378,7 @@ async def add_name(message:types.Message, state: FSMContext):
 
     text = f"📄 Name: {name}\n"
     text += f"📜 Category: {category}\n"
-    text += f"💰 Price: {money} $\n"
+    text += f"💰 Price: {money} CHF\n"
     text += f"📋 Information:👇👇👇\n\n"
     text += f"{info}\n\n"
     text += f"<i>Do you approve the product? ?</i>"

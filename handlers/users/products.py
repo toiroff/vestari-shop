@@ -100,7 +100,7 @@ async def procs(call: types.CallbackQuery):
     )
     await call.message.delete()
     text = f"📄 Name: {prods[1]}\n"
-    text += f"💰 Price: {prods[3]}$\n"
+    text += f"💰 Price: {prods[3]} CHF\n"
     text += f"📋 About:👇👇👇\n\n{prods[4]}"
     photo = f"{prods[2]}"
     keyb = await buy_keyboard(product_id = f"{id}")
@@ -140,7 +140,7 @@ async def get_produzsdct(call: types.CallbackQuery):
     rasm = mahsulot[2]
     narx = f"{mahsulot[3]}"
     text = f"🛍 <b>Name:</b> <i>{name}</i>\n"
-    text += f"💸 <b>Price:</b> <i>{narx}</i>$\n\n"
+    text += f"💸 <b>Price:</b> <i>{narx}</i>CHF\n\n"
     text += f"<b>How many of this product would you like to order??</b>"
     markup = await numberorder(id=id_product, volume=1)
     await call.message.answer_photo(photo = rasm, caption=text, reply_markup=markup)
@@ -175,7 +175,7 @@ async def back_book(call: types.CallbackQuery):
     id = data.replace('Orqaga:','')
     prods = db.get_product(id=id)
     text = f"📄 Name: {prods[1]}\n"
-    text += f"💰 Price: {prods[3]}$\n"
+    text += f"💰 Price: {prods[3]}CHF\n"
     text += f"📋 About:👇👇👇\n\n{prods[4]}"
     photo = f"{prods[2]}"
     keyb = await buy_keyboard(product_id = f"{id}")
@@ -201,8 +201,8 @@ async def add_product(call: types.CallbackQuery):
                     narx = int(data[2]) * int(products[3])
                     total_price += narx
                     text += f"{son}. {products[1]}\n"
-                    text += f"{data[2]} x {products[3]} = {float(narx)}$\n\n"
-            text += f"Total: {float(total_price)}$"
+                    text += f"{data[2]} x {products[3]} = {float(narx)}CHF\n\n"
+            text += f"Total: {float(total_price)}CHF"
             await call.message.answer(text = text,reply_markup = await check_of_order(order_id=f"{data[1]}"))
             await call.message.delete()
         else:
@@ -220,8 +220,8 @@ async def add_product(call: types.CallbackQuery):
                         narx = int(data[2]) * int(products[3])
                         total_price += narx
                         text += f"{son}. {products[1]}\n"
-                        text += f"{data[2]} x {products[3]} = {float(narx)}$\n\n"
-                text += f"Total: {float(total_price)}$"
+                        text += f"{data[2]} x {products[3]} = {float(narx)}CHF\n\n"
+                text += f"Total: {float(total_price)}CHF"
                 await call.message.answer(text = text, reply_markup = await check_of_order(order_id=f"{data[1]}"))
                 await call.message.delete()
             except Exception as err:
@@ -285,8 +285,8 @@ async def get_phon(message: types.Message, state: FSMContext):
         narx = int(data[1])*int(mahsulot[3])
         total_price += narx
         text += f"{son}. {mahsulot[1]}\n"
-        text += f"{data[1]} x {mahsulot[3]} = {narx} $\n\n"
-    text += f"Total: {total_price}$\n"
+        text += f"{data[1]} x {mahsulot[3]} = {narx} CHF\n\n"
+    text += f"Total: {total_price}CHF\n"
     text += f"Phone number: {num}\n\n"
     text += f"<i>Will you order??</i>"
     await message.answer(text = text, reply_markup = yes_no)
@@ -323,8 +323,8 @@ async def add_buasfdfasd(call: types.CallbackQuery, state: FSMContext):
                     total_price += price
                     son += 1
                     text += f"{son}. 🛍 Product name: {nom}\n"
-                    text += f"{number} x {narx} = {price} $\n"
-                text += f"\nTotal price: {total_price} $"
+                    text += f"{number} x {narx} = {price} CHF\n"
+                text += f"\nTotal price: {total_price} CHF"
                 await bot.send_message(chat_id = admin, text = text, reply_markup = await acceptance(user_id = call.from_user.id, order_id = order_id))
             await call.answer("Sent to admin! ✅\nAdmins will contact you.", show_alert=True)
             await state.finish()
@@ -371,8 +371,8 @@ async def accept_admin(call: types.CallbackQuery):
                 total_price += price
                 son += 1
                 text += f"{son}. 🛍 Product name: {nom}\n"
-                text += f"{number} x {narx} = {price} $\n"
-            text += f"\nTotal price: {total_price} $"
+                text += f"{number} x {narx} = {price} CHF\n"
+            text += f"\nTotal price: {total_price} CHF"
             await bot.send_message(chat_id=data[1], text = text)
             await call.answer("Accepted ✅", show_alert=True)
             text += "\nACCEPTED ✅"
@@ -411,8 +411,8 @@ async def accept_admin(call: types.CallbackQuery):
                 total_price += price
                 son += 1
                 text += f"{son}. 🛍 Product name: {nom}\n"
-                text += f"{number} x {narx} = {price} $\n"
-            text += f"\nTotal price: {total_price} $"
+                text += f"{number} x {narx} = {price} CHF\n"
+            text += f"\nTotal price: {total_price} CHF"
             await bot.send_message(chat_id=data[1], text = text)
             await call.answer("Canceled ❌", show_alert=True)
             text += "\nCanceled ❌"
@@ -454,9 +454,9 @@ async def nimadir(message: types.Message):
                 son += 1
                 text += f"{son}.Product name: {product_name}\n"
                 price = int(number) * int(product_price)
-                text += f"{number} x {product_price} = {price} $\n\n"
+                text += f"{number} x {product_price} = {price} CHF\n\n"
                 total_price += price
-            text += f"💸 Total: {total_price} $"
+            text += f"💸 Total: {total_price} CHF"
             await message.answer(text = text)
     else:
         await message.answer("🤷🏻‍♂️You have no orders.")
